@@ -1,0 +1,224 @@
+{%extends 'base.html'%}
+
+{% block title %}Monitoring{% endblock %}
+
+{% block content %}
+
+<section  >
+<h2 class="is-2 title is-light has-text-centered  is-semibold"> BBF Monitoring </h2>
+<div class="columns">
+    <div class="column is-12 is-offset-2">
+        <div class="monitoring-image">
+            <img src="../static/img/monitoring-architecture.png">
+        </div>
+    </div>
+</div>
+</section>
+
+<br>
+<br>
+<section>
+    <div class="container">
+       
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col">
+                                    <div class='container has-text-centered'>
+                                        <h3  class='title is-3 is-semibold is-light'>Control Panel</h3>
+                                        <div class="divider is-large has-text-centered is-centered"> </div>
+                                    
+                                        <div class="field">
+                                            <input id="switchRtlExample" type="checkbox" name="switchRtlExample" class="switch is-rtl" >
+                                            <label for="switchRtlExample" class="is-light is-5 is-semibold title">Start/Stop Monitoring</label>
+                                          </div>
+
+                                          <div class='container has-text-centered'>
+                                            <br>
+                                        
+                                                <div class='buttons is-centered' >
+                                                    <a  href="http://bbf-gui.ddns.net:9093" target="_blank" class="button k-button is-primary is-light is-bold  has-gradient is-fat">
+                                                        Alert Manager
+                                                    </a>
+                                                   
+                                                    <a href="http://bbf-gui.ddns.net:8888" target="_blank" class="button k-button is-primary is-light is-bold  has-gradient is-fat  ">  Dozzle </a>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        <div class='buttons is-centered'>
+                                            <a href="http:///bbf-gui.ddns.net:3000" target="_blank"   class="button k-button is-primary is-light is-bold  has-gradient is-fat">
+                                                Grafana
+                                            </a>
+                                            <a href="http://bbf-gui.ddns.net:9090" target="_blank" class="button k-button is-primary is-light is-bold  has-gradient is-fat">
+                                                Prometheus
+                                            </a>
+                                            <a href="http://bbf-gui.ddns.net:9091" target="_blank" class="button k-button is-primary is-light is-bold  has-gradient is-fat">
+                                                Push Gateway
+                                            </a>
+                                        </div>
+                                    </div>
+                                       
+                                </div>
+                        </div>
+         </div>
+    
+</section>
+<br>
+
+            
+<section class="section "  style="padding: 2.5% 0% 2.5% 0%" >
+    <!-- Container -->
+    <div class="container" >
+        
+    
+        <!-- Content wrapper -->
+        <div class="content-wrapper " >
+          
+              <div class="columns is-vcentered">
+                
+    
+                  <!-- Feature content -->
+                  <div class="column is-5 is-offset-1">
+                      <div class="side-feature-content">
+    
+                          <h3 class="title  is-light" style="display:inline-table;"><span>Grafana</span></h3>
+                          <div class="divider is-long"></div>
+                          <p class="is-light" style="text-align:justify;">No matter where your metrics are kept, you can query, view, receive alerts on, and understand them using Grafana. Develop a data-driven culture by creating, exploring, and sharing stunning dashboards with your team. Using our Grafana instance, you can generate you own charts and pipes using your data collected from your executed benchmarks. </p>
+                          <div class="cta-wrapper" >
+                              <a href="https://grafana.com/" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                                  <span class="text">Grafana</span>
+                                  <span class="front-gradient"></span>
+                              </a> 
+                             
+                          </div>
+                      </div>
+                  </div>
+    
+                  <!-- Feature image -->
+                  <div class="column is-7">
+                      <img class="side-feature" src="https://seeklogo.com/images/G/grafana-logo-15BA0AFA8A-seeklogo.com.png" style="width: 25%; margin-left: 5vw;" alt="">
+                  </div>
+              </div>
+    
+              <div class="columns is-vcentered" >
+                  <!-- Feature image desktop -->
+                  <div class="column is-7 is-hidden-mobile">
+                      <img class="side-feature" style="width: 25%; margin-left: 5vw;"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/2066px-Prometheus_software_logo.svg.png" alt="">
+                  </div>
+    
+                  <!-- Feature content -->
+                  <div class="column is-5" style="padding-top:5%">
+                      <div class="side-feature-content">
+    
+                          <h3 class="title is-light" style=" display:inline-table;"> Prometheus </h3>
+                          <div class="divider is-long"></div>
+                          <p class="is-light" style="text-align:justify;">Prometheus stores data locally on the disk, which helps for fast data storage and fast querying but ability to store metrics in remote storage. In our implementation, Prometheus monitoring server was used to store the data generated from the executed benchmarking tests. </p>
+                          <div class="cta-wrapper">
+                              <a href="https://prometheus.io/" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                                  <span class="text">Prometheus</span>
+                                  <span class="front-gradient"></span>
+                              </a>
+                              
+                          </div>
+                      </div>
+                  </div>
+    
+                  <!-- Feature image only for mobile -->
+                  <div class="column is-7 is-hidden-desktop is-hidden-tablet">
+                      <img class="side-feature" src="../static/img/illustrations/blockchain-blocks.svg" alt="">
+                  </div>
+              </div>
+    
+              <div class="columns is-vcentered" style="padding-top:2.5%">
+                  <!-- Feature content -->
+                  <div class="column is-5 is-offset-1">
+                      <div class="side-feature-content">
+    
+                          <h3 class="title  is-light" style="display:inline-table;">InfluxDB</h3>
+                          <div class="divider is-long"></div>
+                          <p class="is-light" style="text-align:justify">InfluxDB is designed to store large volumes of time series data and quickly perform real-time analysis on that data. Our InfluxDB instance is deployed along with the rest of the monitoring services, responsible to hold all the time series data produced by the benchmarking tests. InfluxDB can then be configured as a data source in the Grafana service.</p>
+                          <div class="cta-wrapper">
+                              <a href="https://www.influxdata.com/" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                                  <span class="text">InfluxDB</span>
+                                  <span class="front-gradient"></span>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+    
+                  <!-- Feature image -->
+                  <div class="column is-7">
+                      <img class="side-feature" style="width: 25%; margin-left: 5vw;" src="https://assets.zabbix.com/img/brands/influxdb.svg" alt="">
+                  </div>
+              </div>
+          </div>
+    
+    
+      </div>
+    
+    </section>
+<br><br>
+
+    <script>
+        window.onload = function(){
+            var reloading = sessionStorage.getItem("reloading");
+            is_monitoring_on();
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var checkbox = document.querySelector('input[type="checkbox"]');
+            var cb= document.getElementById("switchRtlExample");
+            
+          
+            checkbox.addEventListener('change', function () {
+              if (checkbox.checked) {
+               start_monitoring();
+              } else {
+                stop_monitoring();
+              }
+            });
+          });    
+    
+    
+          async function is_monitoring_on(){
+            const response = await 
+            fetch('/docker/management/is_monitoring_configured');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+            var data = await response.json();
+            if (data=="True"){
+                var checkbox = document.querySelector('input[type="checkbox"]');
+                checkbox.checked = true;
+                console.log("Monitoring is ON!");
+            }
+          }
+
+
+          async function start_monitoring(){
+            var cb= document.getElementById("switchRtlExample");
+            cb.disabled = true;
+            const response = await 
+            fetch('/request/mon');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+            var data = await response.json();
+            console.log(data);
+            cb.disabled = false;
+          }
+
+
+          async function stop_monitoring(){
+            var cb= document.getElementById("switchRtlExample");
+            cb.disabled = true;
+            const response = await 
+            fetch('/request/mon-stop');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          var data = await response.json();
+          console.log(data);
+          cb.disabled=false;
+          }
+          
+    </script>
+   {%endblock%}

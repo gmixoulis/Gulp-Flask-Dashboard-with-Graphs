@@ -1,0 +1,131 @@
+
+{%extends 'base.html'%}
+
+{% block title %}Available Networks{% endblock %}
+
+{% block content %}
+
+    
+
+    </section>
+     <!-- ICO section -->
+     <section class="section " style="padding-top:10vh">
+      <!-- Container -->
+      <div class="container">
+          <!-- Title & subtitle -->
+          <h2 class="title is-light is-semibold has-text-centered is-spaced">Available Networks </h2>
+          <h4 class="subtitle is-6 is-light has-text-centered is-compact">Our solution supports XRPL, Hyperledger Besu, Geth and Stellar. Check below for all the available functionalities and instructions!</h4>
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper is-large" style="display:flex;
+          flex-direction:column;">
+
+              <!-- Flying tabs wrapper -->
+              <div x-data="initTabs()" class="flying-wrapper">
+                  <!-- Tabs container -->
+                  <div class="flying-tabs-container">
+                      <!-- Tabs -->
+                      
+                      <div class="flying-tabs">
+                        {%for i in li%}
+                          <div onclick="showReqDetails('{{i}}')" @click="switchTabs($event)" id="{{i}}" class="flying-child tab-{{i}}" data-tab="tab-{{i}}" :class="{
+                              'is-active': activeTab === 'tab-{{i}}',
+                              '': activeTab != 'tab-{{i}}'
+                          }"><a onclick="showReqDetails('{{i}}')" href="javascript:void(0);">{{i}}</a></div>
+                          {%endfor%}
+                          <div class="slider"></div>
+                          
+                      </div>
+                  </div>
+
+                  <!-- Tabs content wrapper -->
+                  <div class="flying-tabs-content">
+                      <!-- Tab 1 -->
+                      {%for i in li%}
+                       <div id="{{i}}1" class="tab-content" :class="{
+                              'is-active': activeTab === 'tab-{{i}}',
+                              '': activeTab != 'tab-{{i}}'
+                          }">
+                            <div class="columns " style="display:block;">
+                              <!-- ICO Terms -->
+                             
+                                  <div class="text-content  has-text-centered " style="padding-top:3vh">
+                                      <h4 id="showName{{i}}" class="title is-light animated preFadeInUp fadeInUp">NAME</h4>
+                                          <div class="animated preFadeInUp fadeInUp">
+
+                                              <p id="showReq{{i}}" class="text-content is-light" style="text-align:justify;">no content</p>
+                                 
+                                          </div>
+                                  </div>
+                            </div>
+                            <span  class="buttons column is-10" style="float:right; animation-delay: .3s; display:inline-block; align-items:center; padding-top:4vh;">
+                                <a href="{{url_for('management')}}" id="bt" target="_blank" class="button k-button k-primary rounded raised has-gradient is-fat is-bold">
+                                 Manage this Network
+                                </a> 
+                                <a href="{{url_for('monitoring')}}"  id="bt" target="_blank" class="button k-button k-primary rounded raised has-gradient front-gradient  is-fat is-bold">
+                                                             Monitor this Network
+
+                              </a>
+                              <a href="{{url_for('benchmarking_engine')}}" id="bt" target="_blank" class="button k-button k-secondary rounded raised has-gradient is-fat is-bold">
+                                Let's do some benchmarks  
+                            </a>
+                        </span>
+                            <div class="column is-7 is-offset-4 " style="margin-top:10vh;  animation-delay: .3s;">
+                                    <img id="logos"  src="../static/dist/img/logo/{{i}}.png" width="60%" height="60%" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                            </div>
+
+                      </div>
+                      <!-- /Tab 1 -->
+                      {%endfor%}
+                      
+                  </div>
+              </div>
+
+          </div>
+          <!-- Content wrapper -->
+      </div>
+      <!-- /Container -->
+  </section>
+  <!-- /ICO section -->
+
+
+ 
+
+
+<script>
+
+    let data = 
+    	{
+       "xrpl":  `XRPL uses a consensus protocol, in which designated servers called validators come to an agreement on the order and outcome of XRP transactions every 3-5 seconds.
+       All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed right away. All transactions are public, with strong cryptography to guarantee the integrity of the system. 
+       
+       Anyone can operate a validator; currently, over 150 validators are active on the ledger, operated by universities, exchanges, businesses, and individuals. Additionally, the consensus protocol ensures the blockchain becomes more decentralized over time as the validator pool grows. <a href="https://xrpl.org/xrp-ledger-overview.html" target="_blank"> Find More. </a>`      ,
+     "besu-poa" :`Hyperledger Besu is an Ethereum client designed to be enterprise-friendly for both public and private permissioned network use cases. It can also be ran on test networks such as Rinkeby, Ropsten, and Görli. Hyperledger Besu includes several consensus algorithms including PoW, and PoA (IBFT, IBFT 2.0, Etherhash, and Clique). Its comprehensive permissioning schemes are designed specifically for use in a consortium environment. <a href="https://www.hyperledger.org/blog/2019/08/29/announcing-hyperledger-besu" target="_blank"> Find More. </a>`
+
+      , "stellar-docker-testnet": `At the lowest level, Stellar is a system for tracking ownership. Like accountants have for centuries, it uses a ledger to do so, but Stellar’s innovation is that there is no actual accountant. Instead there’s a network of independent computers each checking and rechecking the work of the others. Stellar is a system without a central authority—meaning no one can stop the network or secretly adjust the numbers to his liking—yet even without a central authority the ledgers are verified and updated, every five seconds.
+
+      A unique algorithm, called the Stellar Consensus Protocol (SCP), keeps everything in sync. There are many ways to get agreement across a decentralized system—Bitcoin's visionary proof-of-work method was the first and is still the most famous. But, like many first drafts, proof-of-work left room for improvement. SCP strives to be better by being configurable, fast, and highly energy efficient. If you're interested in the deep details, you can read the peer-reviewed paper, published by SOSP, the oldest and most prestigious systems conference, for complete technical details.  <a href="https://www.stellar.org/learn/intro-to-stellar" target="_blank"> Find More. </a>`
+    ,
+       "geth": `Ethereum is a technology for building apps and organizations, holding assets, transacting and communicating without being controlled by a central authority. There is no need to hand over all your personal details to use Ethereum - you keep control of your own data and what is being shared. Ethereum has its own cryptocurrency, Ether, which is used to pay for certain activities on the Ethereum network. <a href="https://ethereum.org/en/what-is-ethereum/" target="_blank"> Find More. </a>`
+      };
+  let names= {
+    "xrpl":"XRPL",
+    "stellar-docker-testnet":"Stellar",
+    "besu-poa" : "Hyperledger Besu",
+    "geth": "Go Ethereum",
+  };
+       function showReqDetails(i){
+        $(`#showReq${i}`).html(`${data[i]}`); 
+        $(`#showName${i}`).html(`${names[i]}`); 
+    }
+    $( document ).ready(function() {
+        $("#besu-poa").addClass("is-active");
+        $(`#showReqbesu-poa`).html(`${data["besu-poa"]}`); 
+        $("#besu-poa1").addClass("is-active");
+        $(`#showNamebesu-poa`).html(`${names["besu-poa"]}`);     
+    });
+
+   
+
+</script>   
+{%endblock%}

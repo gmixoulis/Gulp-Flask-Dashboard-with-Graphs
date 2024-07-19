@@ -1,0 +1,592 @@
+{%extends 'base.html'%}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+  <!-- Animated particles -->
+  <div x-data="initHero()" x-init="initParticles()" id="particles-js"></div>
+
+  <!-- Hero Image and Title -->
+  <div class="hero-body" style="padding-top: 10em">
+      <div class="container ">
+          <div class="columns is-vcentered">
+
+              <!-- Landing page Title -->
+              <div class="column is-4 landing-caption">
+                  <h1 class="title is-1 is-light is-semibold main-title">Blockchain Benchmarking Framework</h1>
+                  <div id="box-left">
+                  <h2 class="subtitle is-5 is-light is-thin">
+                    The blockchain benchmarking framework aims at the deployment and evaluation of different blockchain protocols.
+                  </h2>
+                  <!-- CTA -->
+                  <p  class="buttons" style="font-family: 'Cabin', sans-serif!important;">
+                      <a href="https://github.com/UNIC-IFF/blockchain-benchmarking-framework" target="_blank" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                        <i class="fa fa-github text" style="font-size:13px; display:box; width:4em;"> BBF Core</i> 
+                          <span class="front-gradient"></span>
+                      </a> 
+                      <a href="https://github.com/UNIC-IFF/BBF-FLASK-API/"  target="_blank" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                        <i class="fa fa-github text" style="font-size:13px; display:box; width:4em;"> BBF UI </i>
+                        <span class="front-gradient"></span>
+                    </a>
+                  </p>
+                </div>
+
+              </div>
+              <!-- Hero image -->
+                <div class="column is-8" style="float:right; margin-right:0%!important; padding-right: 0; display:inline;">
+                    <figure class="image">
+                        <img src="../static/dist/img/illustrations/buildings.svg" alt="">
+                    </figure>
+                </div>
+      </div>
+  </div>
+
+  <!-- Hero footer -->
+  <div class="hero-foot">
+      <div class="container" style="padding-top:8vw">
+        <h3 class="title is-light is-semibold has-text-centered " > Sponsors </h3>
+          <div class=" is-centered">
+            <div class="columns  is-desktop ">
+          
+              <!-- Client / partner list -->
+              <div class="column is-quarter" ><a href="https://www.unic.ac.cy/iff/dlrc"><img id="myelement1" class="hero-logo whitten"  target="_blank" src="../static/dist/img/logo/long-logo3.png"  alt="University of Nicosia"></a></div>
+              <div class="column is-3"> <a href="https://ubri.ripple.com/" > <img id="myelement2"   class="hero-logo whitten" target="_blank" src="../static/dist/img/logo/ripple.png" alt="Ripple University Blockchain Research Initiative"></a></div>
+              <div class="column is-quarter"> <a href="https://xrplgrants.org/" > <img id="myelement3"   class="hero-logo whitten" target="_blank" src="../static/dist/img/logo/xrpledger_logo.png" alt="XRPL Grants funds software developers interested in building technical standards and solutions to help grow the XRP Ledger Community, leveraging the XRPL's open source technology."></a></div>
+
+            </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- App section -->
+<section class="section is-darkest is-medium ">
+    <!-- Container -->
+    <div id="video1" class="container">
+       
+
+        <div class="columns is-vcentered ">
+            
+
+            <!-- Feature content -->
+            <div class="column is-5 is-offset-1">
+                <div class="side-feature-content">
+
+                    <h2 class="title  is-light" style="display:inline-table;"><img src="../static/img/icons/techpaper.svg" alt=""> Instructions</h2>
+                    <div class="divider is-long"></div>
+                    <p class="is-light" style="text-align:justify; padding-bottom:2.5em;">The  video in the end of the page presents a demonstration of the Benchmarking Framework.
+                        The above Controller is the Framework's controller which depicts the components of the framework. The first and mandatory step is the Monitoring. This step
+                    trigger the benchmarking engine which will later record the networks' traffic. Second step is the Benchmarking Engine. In this you can select which blockchain network to configure and start, but also you can 
+                     generate traffic which are transactions between random generated accounts. The management component is the third one where you can understand the logs of the nodes and the network's information,
+                    also you can navigate to Dozzle for the complete logs and to Grafana where you can watch the actual benchmargking diagrams. The Available Networks presents the current running networks configured in previous steps. </p>
+                </div>
+            </div>
+
+            <!-- Feature image -->
+            <div id="vid"   class="column is-7 is-offset-1" style="padding-top:3em;">
+                    <iframe  width="560" height="315" src="../static/dist/img/media/ubri_2022.mp4"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+            </iframe>
+            </div>
+        </div>
+
+        <!-- Divider -->
+      <div class="divider is-centered "></div>
+      <!-- Title & subtitle -->
+      <h2 class="title is-light is-semibold has-text-centered " >About Blockchain Benchmarking Framework</h2>
+      <p class="is-light" style="text-align:justify;">
+       Since the choice of a blockchain protocol is challenging,  especially for corporates that seek to use the technology
+       for their products and/or services, we developed an architecture for a
+        blockchain benchmarking framework that aims to serve
+        as a staged environment for supporting blockchain
+        researchers and developers to test and validate the
+        performance of a blockchain protocol under various
+        settings and synthetic scenarios. In addition, the
+        modules provided by the benchmarking framework aim
+        to identify any performance bottlenecks during the
+        network being under heavy load.</p>
+       
+        <!-- /Content wrapper -->
+    </div>
+    <!-- /Container -->
+
+
+
+  </section>
+
+
+
+<!-- Side Features section -->
+<section class="section  has-big-dark-gradient"  style="padding: 2.5% 0% 2.5% 0%" >
+  <!-- Container -->
+  <div class="container" >
+     
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper " >
+        <div class="divider is-centered " ></div>
+        <div class="content-wrapper ">
+            <h2 class="title is-light is-semibold has-text-centered "  style="padding-bottom:5%; margin-top:-0.8%"> Supported Networks </h2>
+              <div class="columns is-vcentered">
+               
+                
+                  <!-- Feature -->
+                  <div class="column is-3">
+                      <div class="feature">
+                        <a href="https://xrpl.org/"  target="_blank"> <img id="logos" style="padding-bottom:2em;" src="../static/dist/img/logo/xrpl.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart"></a>
+                      </div>
+                  </div>
+                  <div class="column is-3">
+                    <div class="feature">
+                        <a href="https://www.stellar.org/"  target="_blank"> <img id="logos"  style="padding-bottom:2.2em;" src="../static/dist/img/logo/stellar-docker-testnet.png" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart"> </a>
+                  
+                    </div>
+                   </div>
+                  <!-- Feature -->
+                  <div class="column is-3">
+                      <div class="feature">
+                        <a href="https://www.hyperledger.org/blog/2019/08/29/announcing-hyperledger-besu" target="_blank"> <img id="logos"  style="padding-bottom:2em;" src="../static/dist/img/logo/besu-poa.png" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart"></a>
+                   
+                      </div>
+                  </div>
+                  <!-- Feature -->
+                  <div class="column is-3">
+                      <div >
+                        <a id= "ethereum-logo" href="https://ethereum.org/en/"  target="_blank">  <img id="logos"  id="eth-logo"style="padding-bottom:1em; " src="../static/dist/img/logo/geth.png"  alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart"></a>
+                          
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Play video button -->
+    
+         </div>
+        </div>
+    </div>
+</section>
+
+<section class="section   is-darkest is-medium"  style="padding: 2.5% 0% 2.5% 0%" >
+<!-- Container -->
+<div class="container" >
+    
+
+    <!-- Content wrapper -->
+    <div class="content-wrapper " >
+        <div class="divider is-centered"></div>
+        <h2 class="title is-light is-semibold has-text-centered">Articles</h2>
+          <div class="columns is-vcentered">
+            
+
+              <!-- Feature content -->
+              <div class="column is-5 is-offset-1">
+                  <div class="side-feature-content">
+
+                      <h3 class="title  is-light" style="display:inline-table;"><img src="../static/img/icons/ico/bitbanner.svg" alt=""> <span>Medium Articles</span></h3>
+                      <div class="divider is-long"></div>
+                      <p class="is-light" style="text-align:justify;">The blockchain trilemma (scalability, security, and decentralization) triggered a competition between initiatives and project teams from the wider blockchain ecosystem. These initiatives attempt to propose alternative to Bitcoin implementations for Distributed Ledgers. </p>
+                      <div class="cta-wrapper" >
+                          <a href="https://medium.com/ripple-series/the-big-bang-of-blockchain-consensus-algorithms-the-case-of-ripple-1413fefb4f3b" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                              <span class="text">Part I</span>
+                              <span class="front-gradient"></span>
+                          </a> 
+                          <a  href="https://medium.com/@dlrc-iff-unic/the-big-bang-of-blockchain-consensus-algorithms-part-ii-27419f183141" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                            <span class="text">Part II</span>
+                            <span class="front-gradient"></span>
+                        </a>
+                        <a  href="https://medium.com/@dlrc-iff-unic/the-big-bang-of-blockchain-consensus-algorithms-part-iii-eaf846d7aecf" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                            <span class="text">Part III</span>
+                            <span class="front-gradient"></span>
+                        </a>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Feature image -->
+              <div class="column is-7">
+                  <img class="side-feature" src="../static/img/illustrations/token.svg" alt="">
+              </div>
+          </div>
+
+          <div class="columns is-vcentered" >
+              <!-- Feature image desktop -->
+              <div class="column is-7 is-hidden-mobile">
+                  <img class="side-feature" src="../static/img/illustrations/blockchain-blocks.svg" alt="">
+              </div>
+
+              <!-- Feature content -->
+              <div class="column is-5" style="padding-top:5%">
+                  <div class="side-feature-content">
+
+                      <h3 class="title is-light" style="display:inline-table;"><img src="../static/img/icons/ico/bitnetwork.svg" alt=""> Conference Articles</h3>
+                      <div class="divider is-long"></div>
+                      <p class="is-light" style="text-align:justify;">Blockchain and Distributed Ledger Technologies
+                        appear to be at a worldwide threshold of acceptance
+                        and adoption. Since their inception, several innovative
+                        projects have been proposing solutions to the
+                        blockchain trilemma, improving blockchain features
+                        and its technical limitations. </p>
+                      <div class="cta-wrapper">
+                          <a href="https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/29ef303a-820e-44fb-b659-cdd8f39c478a/content" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                              <span class="text">HICSS 2022</span>
+                              <span class="front-gradient"></span>
+                          </a>
+                          <a href="https://ieeexplore.ieee.org/abstract/document/9569810" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                            <span class="text">BRAINS 2021</span>
+                            <span class="front-gradient"></span>
+                        </a>
+                        
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Feature image only for mobile -->
+              <div class="column is-7 is-hidden-desktop is-hidden-tablet">
+                  <img class="side-feature" src="../static/img/illustrations/blockchain-blocks.svg" alt="">
+              </div>
+          </div>
+
+          <div class="columns is-vcentered" style="padding-top:2.5%">
+              <!-- Feature content -->
+              <div class="column is-5 is-offset-1">
+                  <div class="side-feature-content">
+
+                      <h3 class="title  is-light" style="display:inline-table;"><img src="../static/img/icons/ico/bitmining.svg" alt=""> Journals</h3>
+                      <div class="divider is-long"></div>
+                      <p class="is-light" style="text-align:justify">Blockchain and Distributed Ledger Technology (DLT) appears to be at a worldwide threshold of acceptance and adoption. Since their inception, several innovative projects have been proposing solutions to the blockchain trilemma, improving blockchain features and its technical limitations. However, the adoption of blockchain as a technology or a software component, requires a comprehensive understanding and characterization of their technical principles and characteristics.</p>
+                      <div class="cta-wrapper">
+                          <a href="https://ieeexplore.ieee.org/abstract/document/9813702" class="button k-button k-primary raised has-gradient is-bold" target="_blank">
+                              <span class="text">IEEE ACCESS Journal: 2022</span>
+                              <span class="front-gradient"></span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Feature image -->
+              <div class="column is-7">
+                  <img class="side-feature" src="../static/img/illustrations/crypto-mining.svg" alt="">
+              </div>
+          </div>
+      </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- /App section -->
+
+<!-- Company section -->
+<section class="section has-big-dark-gradient " style="padding: 2.5% 0% 0% 0%">
+  <!-- Container -->
+  <div class="container">
+      <!-- Divider -->
+      <div class="divider is-centered"></div>
+      <!-- Title & subtitle -->
+      <h2 class="title is-light is-semibold has-text-centered">Our Team</h2>
+      <p class="subtitle is-6 is-light is-compact has-text-centered" >We are a team of blockchain researchers and developers working at the Distributed Ledgers Research Centre (DLRC) which is hosted at the Institute for the Future (IFF), University of Nicosia (UNIC).  We are a diverse mixture of people, fueled by our passion for academic research! DLRC aims to advance the field with transformative applications of the technology that emerge directly from the ecosystem by turning academic research into real use-cases.
+        <br>If you wish to learn more about us, get involved <a href="https://www.unic.ac.cy/iff/dlrc/" target="_blank">here!</a></p>
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper is-large">
+          <div class="columns is-vcentered">
+
+              <div class="column is-hidden-mobile"></div>
+
+              <!-- Team member -->
+              <div class="column is-3">
+                  <div class="team-member-container">
+                      <!-- Card -->
+                      <div class="dark-card">
+                          <!-- Avatar wrapper -->
+                          <div class="avatar">
+                              <!-- Svg circle -->
+                              <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+                                  <!-- Track -->
+                                  <circle class="circle-chart-background" stroke-width="1" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                                  <!-- Stroke -->
+                                  <circle class="circle-chart-circle" stroke-width="1" stroke-dasharray="33,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                              </svg>
+                              <!-- Sketeched face -->
+                              <img class="is-real" src="../static/img/team/klitos.jpg" alt="">
+                              <!-- Real face -->
+                              <a href="https://www.linkedin.com/in/klitoschristodoulou/" target="_blank"><img class="is-sketch" src="../static/img/team/klitos.jpg" alt=""></a>
+                          </div>
+                          <!-- Member meta -->
+                          <div class="member-info">
+                              <h4 class="title is-light is-6 is-tight">Klitos Chrostodoulou, PhD</h4>
+                              <div class="position">
+                                Scientific Lab Leader <br>
+                                Blockchain, Distributed Ledger Systems, Machine Learning, Data Managemento
+                                </div>
+                              
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Team member -->
+              <div class="column is-3">
+                  <div class="team-member-container">
+                      <div class="dark-card">
+                          <div class="avatar">
+                              <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+                                  <circle class="circle-chart-background" stroke-width="1" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                                  <circle class="circle-chart-circle" stroke-width="1" stroke-dasharray="33,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                              </svg>
+                              <img class="is-sketch" src="../static/img/team/elias.jpg" alt="">
+                             <a href="https://www.linkedin.com/in/elias-iosif-8b45074/" target="_blank"> <img class="is-real" src="../static/img/team/elias.jpg" alt=""> </a>
+                          </div>
+                          <div class="member-info">
+                              <h4 class="title is-light is-6 is-tight">Elias Iosif, PhD</h4>
+                              <div class="position">
+                                Scientific Lab Co-Leader <br>
+                                Blockchain, Distributed Ledger Systems, Machine Learning</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Team member -->
+              <div class="column is-3">
+                  <div class="team-member-container">
+                      <div class="dark-card">
+                          <div class="avatar">
+                              <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+                                  <circle class="circle-chart-background" stroke-width="1" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                                  <circle class="circle-chart-circle" stroke-width="1" stroke-dasharray="33,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                              </svg>
+                              <img class="is-sketch" src="../static/img/team/igle.jpg" alt="">
+                              <a href="https://www.linkedin.com/in/antonios-inglezakis-a2665757/" target="_blank">   <img class="is-real" src="../static/img/team/igle.jpg" alt=""> </a>
+                          </div> 
+                          <div class="member-info" style="padding-top:20px">
+                              <h4 class="title is-light is-6 is-tight">Antonis Inglezakis</h4>
+                              <div class="position"> IFF ex-Researcher, <br> Ripple Fellow</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="column is-hidden-mobile"></div>
+          </div>
+
+          <div class="columns is-vcentered">
+
+              <div class="column is-hidden-mobile"></div>
+
+              <!-- Team member -->
+              <div class="column is-3">
+                  <div class="team-member-container">
+                      <div class="dark-card">
+                          <div class="avatar">
+                              <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+                                  <circle class="circle-chart-background" stroke-width="1" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                                  <circle class="circle-chart-circle" stroke-width="1" stroke-dasharray="33,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                              </svg>
+                              <img class="is-sketch" src="../static/img/team/evgenia.jpg" alt="">
+                              <a href="https://www.linkedin.com/in/evgenia-kapassa/" target="_blank">  <img class="is-real" src="../static/img/team/evgenia.jpg" alt=""></a>
+                          </div>
+                          <div class="member-info">
+                              <h4 class="title is-light is-6 is-tight">Eugenia Kapassa</h4>
+                              <div class="position">
+                                IFF Researcher, <br> PhD Candidate</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Team member -->
+              <div class="column is-3">
+                  <div class="team-member-container">
+                      <div class="dark-card">
+                          <div class="avatar">
+                              <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+                                  <circle class="circle-chart-background" stroke-width="1" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                                  <circle class="circle-chart-circle" stroke-width="1" stroke-dasharray="33,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                              </svg>
+                              <img class="is-sketch" src="../static/img/team/marios.jpg" alt="">
+                              <a href="https://www.linkedin.com/in/marios-touloupos-967a69110/" target="_blank"> <img class="is-real" src="../static/img/team/marios.jpg" alt=""> </a>
+                          </div>
+                          <div class="member-info">
+                           <h4 class="title is-light is-6 is-tight">Marios Touloupos</h4>
+                              <div class="position">IFF Researcher <br> PhD Candidate, Ripple Fellow</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Team member -->
+              <div class="column is-3">
+                  <div class="team-member-container">
+                      <div class="dark-card">
+                          <div class="avatar">
+                              <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+                                  <circle class="circle-chart-background" stroke-width="1" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                                  <circle class="circle-chart-circle" stroke-width="1" stroke-dasharray="33,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+                              </svg>
+                              <img class="is-sketch" src="../static/img/team/george.png" alt="">
+                              <a href="https://www.linkedin.com/in/george-michoulis" target="_blank">  <img class="is-real" src="../static/img/team/george.png" alt=""> </a>
+                          </div>
+                          <div class="member-info">
+                              <h4 class="title is-light is-6 is-tight">George Michoulis</h4>
+                              <div class="position">IFF Software Engineer <br> Full Stack and Blockchain Developer</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="column is-hidden-mobile"></div>
+
+          </div>
+
+          
+          <!-- Spaced divider -->
+          <div class="divider is-centered " style="margin-top:5%"></div>
+          <!-- Title & subtitle -->
+          <h2 class="title is-light is-semibold has-text-centered ">FAQ</h2>
+          <h4 class="subtitle is-6 is-light has-text-centered is-compact">Below you will find answers to the most frequent questions. For further information, please feel free to check our recent articles . If you still can’t find what you are looking for, contact us at: <a href="mailto:iff@unic.ac.cy"> iff@unic.ac.cy</a>
+        </h4>
+
+          <!-- Content wrapper -->
+          <div id="FAQ" class="content-wrapper is-large">
+              <div class="columns">
+                  <div class="column is-5 is-offset-1">
+
+                      <!-- Accordion -->
+                      <div class="accordion">
+                          <!-- Option -->
+                          <div class="accordion-option">
+                              <input type="checkbox" id="toggle1" class="accordion-toggle" />
+                              <label class="accordion-title" for="toggle1">
+                                  What is Blockchain ?
+                              </label>
+                              <div class="accordion-content">
+                                  <p>Blockchain is a disruptive technology that focuses on the safe exchange of data between several distributed applications.</p>
+                              </div>
+                          </div>
+
+                          <!-- Option -->
+                          <div class="accordion-option">
+                              <input type="checkbox" id="toggle2" class="accordion-toggle" />
+                              <label class="accordion-title" for="toggle2">
+                                What is the blockchain trilemma?
+                              </label>
+                              <div class="accordion-content">
+                                  <p>Termed by Vitalik Buterin, the blockchain trilemma addresses the challenges developers face in creating a blockchain that is scalable, decentralized and secure — without compromising on any facet.
+                                </p>
+                              </div>
+                          </div>
+
+                          <!-- Option -->
+                          <div class="accordion-option">
+                              <input type="checkbox" id="toggle3" class="accordion-toggle" />
+                              <label class="accordion-title" for="toggle3">
+                                What is your motivation behind this work?
+                              </label>
+                              <div class="accordion-content">
+                                  <p>The motivation for this work is to provide a the necessary tools that aim to study the performance of blockchain protocols and understand how they react under different settings and malicious behaviors.
+                                </p>
+                              </div>
+                          </div>
+
+                          <!-- Option -->
+                          <div class="accordion-option">
+                              <input type="checkbox" id="toggle4" class="accordion-toggle" />
+                              <label class="accordion-title" for="toggle4">
+                                Why did you pick this idea to work on?
+                              </label>
+                              <div class="accordion-content">
+                                  <p>We are a team of blockchain researchers at an the DLRC lab of University of Nicosia. Exploring the space [(at the technical level) we have identified that there is a lack of tools, frameworks and documentation for assessing the performance of blockchain protocols. Most studies available in the literature build simulators. Our approach enables users to deploy close to real scenarios with the use of the actual clients used by a variety of protocols. </p>
+                              </div>
+                          </div>
+
+                         
+                      </div>
+                      <!-- /Accordion -->
+                  </div>
+
+
+                  <div class="column is-5">
+
+                      <!-- Accordion -->
+                      <div class="accordion" style='text-align: justify;'>
+                         <!-- Option -->
+                         <div class="accordion-option">
+                            <input type="checkbox" id="toggle5" class="accordion-toggle" />
+                            <label class="accordion-title" for="toggle5">
+                              What networks are currently supported?
+                            </label>
+                            <div class="accordion-content">
+                                <p>Currently our solution supports XRPL protocol, Hyperledger Besu, Geth and Stellar. We are also working on integrating Hyperledger Fabric, Avalanche and IOST blockchains.
+                              </p>
+                            </div>
+                        </div>
+                          <!-- Option -->
+                          <div class="accordion-option">
+                              <input type="checkbox" id="toggle6" class="accordion-toggle" />
+                              <label class="accordion-title" for="toggle6">
+                                What are the consensus algorithms that are supported and tested?
+                              </label>
+                              <div class="accordion-content">
+                                  <p>Currently, within the Blockchain Benchmarking Framework (BBF) you can work with PoA, PoW, SCP an RPCA.
+                                </p>
+                              </div>
+                          </div>
+
+                          <!-- Option -->
+                          <div class="accordion-option">
+                              <input type="checkbox" id="toggle7" class="accordion-toggle" />
+                              <label class="accordion-title" for="toggle7">
+                                What are the most important functionalities of the BBF?
+                              </label>
+                              <div class="accordion-content">
+                                  <p>Along with a blockchain network, the end-user can deploy a monitoring system which is consisted of different services for capturing and visualizing the produced data while a benchmarking test is being executed. Currently, when a blockchain is deployed with the BBF, the user can generate new accounts/wallets, spread the corresponding tokens (i.e.  generating traffic in the form of payment transactions) and adapt the network connectivity to create different network topologies. In addition, a benchmarking test could be defined by the user of the BBF within a file, describing a malicious behavior by one or multiple network nodes. An example of such a scenario can be found <a href="https://github.com/UNIC-IFF/xrpl-unl-manager/blob/3f852e1563b63f2e0acc048ff754e9f946e79cc7/sample_unlscenario.json">here</a>.
+                                </p>
+                              </div>
+                          </div>
+
+                          <!-- Option -->
+                          <div class="accordion-option">
+                              <input type="checkbox" id="toggle8" class="accordion-toggle" />
+                              <label class="accordion-title" for="toggle8">
+                                How can I use the Blockchain Benchmarking Framework?
+                              </label>
+                              <div class="accordion-content">
+                                  <p>The first step is to select which blockchain network to configure and start through the <a href="{{url_for('benchmarking_engine')}}">Benchmarking Engine</a>. Then, you can easily create wallets and generate traffic in form of payment transactions between random generated accounts. 
+                                    Afterwards, you are able to monitor and visualize all the available information through the <a href="{{url_for('monitoring')}}">Monitoring Engine</a>. 
+                                    Additionally, through the <a href="{{url_for('management')}}">Management</a> page, you have the full control of your network (e.g., start and stop a network).
+                                     Finally, you can check the <a href="{{url_for('available_networks')}}"> Available Networks </a> and always keep up with our latest additions. 
+                                </p>
+                              </div>
+                          </div>
+
+                          
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- /Content wrapper -->
+      <!-- /Content wrapper -->
+  </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        $('#show').click(function() {
+          $('.menu').toggle("slide");
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function(){
+      // Target your .container, .wrapper, .post, etc.
+      $("#vid").fitVids();
+      $("#video1").fitVids();
+    });
+  </script>
+
+
+{%endblock%}

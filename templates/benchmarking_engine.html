@@ -1,0 +1,922 @@
+
+{%extends 'base.html'%}
+
+{% block title %}Benchmarking Engine{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+            <!-- Hero Image and Title -->
+            <div class="hero-body">
+                <div class="container" style=" margin-top: 5vh; margin-bottom:-5vh">
+    
+                        <!-- Landing page Title -->
+                            <h1 class="title is-1  is-light is-semibold has-text-centered is-spaced">Blockchain Benchmarking Framework </h1>
+                            
+                  </div>
+            </div>
+        </section>
+    
+        <section class="section" >
+            <div class="container">
+              <div class="column is-5">
+
+     
+                
+                  <!-- Content wrapper -->
+                  <div class="content-wrapper is-large">
+                    <div class="columns is-vcentered">
+                        <!-- Feature -->
+                        <div class="column is-9">
+                            <div class="feature" style="float:right;">
+                              <a onclick="view(deploy)" id="deploy" title="Toggle down the system where you cant configure and start a network" class="button k-button k-secondary is-bold  has-gradient is-fat ">
+                                <span class="text" >Deploy a Network</span>
+                                <span class="front-gradient"></span>
+                                <span id="iconndeploy"  class="iconify-inline icon "><i class="mdi mdi-chevron-down mdi-1000px"></i></span>
+                            </a>
+                            </div>
+                            <div class="w3-container">
+                                <div id="id01" class="w3-modal">
+                                  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+                                    <div class="w3-container w3-black">
+                                      <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                     <br>
+                                      <h2 class="title is-light is-2 is-semibold has-text-centered ">Please start the Monitoring Engine before configure a network</h2>
+                                      <h4 class="title is-light is-4 is-semibold has-text-centered ">This is required only once. <span style="color:red;"> Then press again  the configure  button <span> </h4>
+                                              <div class=" has-text-centered ">
+                                              <a id="start_monitoring" style="margin-left:0.1vw; "  class="button k-button k-secondary raised has-gradient is-fat is-bold" onclick="document.getElementById('id01').style.display='none'">
+                                                <span class="text">Start Monitoring</span>
+                                                <span class="front-gradient"></span>
+                                            </a>
+                                        
+                                            </div>
+                                      </div>
+                                  </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Feature -->
+                        <div class="column is-11">
+                            <div class="feature">
+                              <a href="/swagger"  title="For more advanced users. Redirects to swagger API control panel"  class="button k-button k-primary raised has-gradient is-bold is-fat">
+                                <span class="text" >VIEW API</span>
+                                <span class="front-gradient"></span>
+                            </a>
+                            </div>
+                        </div>
+                        <!-- Feature -->
+                        <div class="column is-9">
+                            <div class="feature">
+                              <a href="{{url_for("monitoring")}}" target="_blank" style="float:left;" title="Redirect to Monitoring page to check benchmarks after traffic generation" class="button k-button k-primary raised has-gradient is-bold is-fat ">
+                                <span class="text" >Monitoring</span>
+                                <span class="front-gradient"></span>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+    
+                
+                </div>
+                <!-- Content wrapper -->
+              </div>
+              <div id="steps" class="container hidden"  style="margin-top:-5vh; ">
+              <div class="divider  is-centered"> </div>
+                <h2 class="title is-light is-semibold has-text-centered is-spaced" style="margin-bottom:-2rem;">Deploy a Network </h2>
+                <!-- Flying tabs wrapper -->
+              <div  class="flying-wrapper">
+                <!-- Tabs container -->
+                <div class="steps-container">
+                    <!-- Tabs -->
+                    
+                    <div class="steps" style="display:grid!important;">
+                        
+                        <div id="multi-step-form-container">
+                          
+                                <!-- Step 1 Content -->
+                                <section id="step-1" class="form-step">
+                                    <h2 class="title is-light is-2 is-semibold has-text-centered ">Fill the fields to configure a Network</h2>
+                                    <!-- Step 1 input fields -->
+                                    <div class="container steps"  >
+                                      <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="post">
+
+                                    <div class="columns is-vcentered">
+                                        <div class="column is-4">
+                                          <div class="archives-widget">
+                                              <select id="selected" class="select is-small has-text-centered" style="background-color:transparent; color:white; font-size:16px;">
+                                                <option id="opt1" class="option has-text-centered">Select a Network</option>
+                                                  {% for i in li%}
+                                                <option name='{{i}}' value="{{i}}" id="opt-{{i}}" class="option has-text-centered">{{i}}</option>
+                                                  {%endfor%}
+                                                </select>
+                                        </div>
+                                      </div>
+                                          <div class="column is-5" style="padding-left:7vw; margin-bottom:-4.5vh;">
+                                            <!-- Form -->
+                                            <div class="column is-6">
+                                                <div class="control-material is-secondary">      
+                                                <input id="num_of_nodes" class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
+                                                <span class="material-highlight"></span>
+                                                <span class="bar"></span>
+                                                <label>Num of Nodes</label>
+                                            </div>
+                                          </div>
+                                          </div>
+                                          <div class="column is-3">
+                                            <button  id="btn1" class="button k-button is-primary is-fat rounded " > Configure! </button>
+                                        </div>
+                                      </form>
+                                      
+                                      </div>
+                                      <br>
+                                      <row>
+                                        <div class=" has-text-centered">
+                                          <div class="mt-3" id="mt-3">
+                                            <div id="wait1" class=" loader  appear has-text-centered is-centered" style="display:none;"> </div>
+                                            <div id="wait1t" class="hidden title is-6 has-text-centered is-centered is-light is-semibold">Loading...</div>
+                                            <span id="stamon" class="title hidden title is-6  is-light hidden"  >Ready to Configure a Network!</span>
+  
+                                            <span id="sta" class="title hidden title is-6  is-light hidden"  >Start a Network by clicking the start button (green) on the panel below</span>
+                                        </div>
+                                      </row>
+                                      
+                                  </div>
+                                </div>
+                                </section>
+                               
+                               
+                            
+                        </div>
+                    </div>
+    
+                </div>
+              </div>
+            </div>
+        </section>
+
+        <section id="array"  class="section" style="margin-top:0; padding-top:0; ">
+            <div class="container">
+              <div class="b-table">
+                <div class="table-wrapper has-mobile-cards">
+                  <h4 class="title is-4 is-light has-text-centered is-centered"> Network Control Panel </h4>
+                      <div class="divider is-centered has-text-centered is-large is-long"> </div>
+                  <table id="myTable" class="table is-fullwidth is-hoverable is-fullwidth">
+                    <thead style="font-weight: normal;">
+                    <tr>
+                      <th class="is-chevron-cell"></th>
+                      <th></th>
+                      <th>Network name</th>
+                      <th> Number of Nodes </th>
+                      <th>Network status</th>
+                      <th>Actions</th>
+                      <th>Traffic Generation</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                      
+
+                                <div id="modall" class="w3-container">
+                                  
+                              </div>
+
+                              
+                    
+                    </tbody>
+                    
+                  </table>
+                  <h4 style="font-weight:normal;" id="init_message" class="is-6 is-light title has-text-centered"> There is no data yet</h4>
+                </div>
+              </div>
+            </div>
+          </section> 
+    </div>
+
+
+
+
+<script >
+  renderjson.set_max_string_length(150);
+  //create network details 
+  async function node(networkk) {
+    var data ="";
+    if (document.cookie.indexOf(`node${networkk}`) <= 0) {    
+	    const response = await 
+      fetch(`/traffic/${networkk}/node`);
+       
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+       data = await response.json();
+       sessionStorage.setItem(`node${networkk}`, data);
+
+    }
+    else{
+       data= sessionStorage.getItem(`node${networkk}`);
+    }
+
+      console.log(data);
+      document.getElementById(`trf-box${networkk}`).innerHTML=`   <h4 class="title is-light is-4 animated preFadeInUp fadeInUp" style="margin-left:1.3rem;">${networkk}</h4>
+      <div class="divider is-centered"></div>
+      <h5 class="title is-light is-5 animated preFadeInUp fadeInUp">Server Info</h5>
+      <div class="animated preFadeInUp fadeInUp" style="width:70rem;  text-align:left; overflow:auto;">
+          <span id='test${networkk}' class="text-content is-light" style="display:inline;"></span>
+      </div>
+      <h6 class="title is-light is-5 animated preFadeInUp fadeInUp">Docker Container Statistics</h6>
+      <div class="divider is-centered"></div>
+
+
+        <div class="accordion accordion-flush" id="accordionFlushExample1" style="max-width:70rem; width:100%; float:left; max-height:50rem; overflow:auto;">
+        
+      </div>
+      <div id="loader" class="loader  appear has-text-centered is-centered"> </div>
+      <div id="loader-text" class="appear  has-text-centered is-centered is-light is-semibold">Loading...</div>`;
+      
+      document.getElementById(`test${networkk}`).appendChild(renderjson(data));
+      fetchStats(); 
+      };
+
+
+      //function to return the docker stats  with time limit
+   async function fetchStats() { 
+    const itemStr = sessionStorage.getItem('stats');
+    const item = JSON.parse(itemStr);
+    const now = new Date();
+    console.log(itemStr);
+    // compare the expiry time of the item with the current time
+    if (itemStr != null  ) {
+      if(now.getTime() > item.expiry){
+      // If the item is expired, delete the item from storage
+      localStorage.removeItem(key);
+      console.log("expired stats");
+    }
+  }
+    var data= ""; 
+    if (sessionStorage.getItem('stats')<=0) {    
+    const response = await 
+    fetch(`/docker/management/stats`);
+     
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+     data = await response.json();
+    var expDate = new Date();
+
+    expDate.setTime(expDate.getTime() + (5 * 60 ));
+    const item = {
+      data: data,
+      expiry: expDate,
+    };
+    sessionStorage.setItem('stats', JSON.stringify(item))
+
+  }
+  else {
+     data= item.data;
+  }
+      console.log(data);
+      $('#loader').toggleClass("appear hidden");
+      $('#loader-text').toggleClass("appear hidden");
+
+      $.each(data, function(index, value) {
+        $(`
+          <div class="accordion-item text-white bg-dark" style="width:100%" >
+            <h5 class="accordion-header is-5 text-white is-semibold bg-dark" id="flush-heading${index}" st>
+              <button class=" text-white bg-dark is-semibold is-6 accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${index}" aria-expanded="false" aria-controls="flush-collapse${index}">
+                ${value.Container_name}
+              </button>
+            </h5>
+            <div id="flush-collapse${index}" class="accordion-collapse collapse" aria-labelledby="flush-heading${index}" data-bs-parent="#accordionFlushExample1">
+              <div class="accordion-body text-white bg-dark">
+              <table class="table table-dark">
+                <thead style="text-align:center; "> 
+                  <tr style="text-align:center;">
+                    <th scope="col">CPU Usage</th>
+                    <th scope="col">Uptime</th>
+                    <th scope="col">Memory Usage</th>
+                    <th scope="col">Network Stats</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="text-align:left;">
+                    <td>${value.CPU_ucsage_percent}</td>
+                    <td>${value.Uptime}</td>
+                    <td >${value.memory_usage_percentage}</td>
+                    <td id="net${index}"></td>
+
+                  </tr>
+                  </tbody>
+                  </table>
+            </div>
+          </div>
+        </div>
+      `).appendTo('#accordionFlushExample1');
+      
+      document.getElementById(`net${index}`).appendChild(renderjson(value.Network_Stats));
+    });
+   };
+    
+   //Tab of wallet information
+   //The first method with the .innerHTML creates the container of the wallets
+   //The second method with the "each" creates the container of the waller details
+    async function show_traf_box(network){
+      document.getElementById(`trf-2${network}`).innerHTML=`
+      <h4 class="title is-light is-4 animated preFadeInUp fadeInUp has-text-cetered" style="margin-left:1.3rem;">${network}</h4>
+      <span  class="buttons column is-12" style="float:right; animation-delay: .3s; display:inline-block; align-items:center;  padding-top:4vh;">
+        <a href="http://bbf-gui.ddns.net:9091/" id="bt" target="_blank" class="button k-button k-primary rounded raised has-gradient is-fat is-bold" >
+         Check Transactions' Logs
+        </a> 
+        
+      </span> 
+     
+      <div class="container is-centered has-text-cetered" style="display:inline; margin-right:50rem">
+        
+        <div class="columns container" tyle="margin-left:-10rem">
+          <TA class="is-offset-1 column is-3"  style="height:500px; width:36%; overflow:hidden; overflow-y:auto;   -webkit-overflow-scrolling: touch;          ">
+            <h4 class="title is-light is-5 is-vcentered"> Click on of the following generated accounts </h4>
+            <br> 
+          </TA>
+               
+
+              <div id='trf-box2${network}' class="is-offset-1 column is-3" style="height:60%; width:70%; overflow:auto;   -webkit-overflow-scrolling: touch; ">
+                <h4 class="title is-light is-5 has-text-centered is-vcentered"> Account Logs </h4>
+              </div>
+        </div>
+      </div>
+      ` ;
+      var data="";
+          const response = await 
+          fetch(`traffic/wallets/${network}`);
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          data = await response.json();
+        
+      console.log(data);
+          $.each(data, function(index, value) {
+            $(`
+            <a id="acc_${index}" class=" has-text-cetered" onclick="get_acc_info('${network}','${value}')">
+              <div class="card text-white bg-dark mb-3" style="max-width: 28rem;>
+              <a class="card-header" > <h6 class="title is-light is-bold is-6"> ${value} </h6> </a>
+            </div>
+          </a>
+          `).appendTo('TA');
+          })
+      };
+
+    
+    function get_acc_info(net,acc){ // returns the selected account/waller information
+        fetch(`/traffic/${net}/acc/${acc}`)
+        .then((response) => response.json())
+        .then(function(data) {
+          document.getElementById(`trf-box2${net}`).innerHTML=`
+          <h4 class="title is-light is-5 has-text-centered is-vcentered"> Account Logs </h4>
+          <br> <br>
+          <div class="columns is-4 ">
+              <span id="jsonacc${net}" class="text-content is-light" style="text-align:justify; display:inline; margin-top:-1.5%"></span>
+          </div>`;
+          document.getElementById(`jsonacc${net}`).appendChild(renderjson(data));
+
+    });
+  };
+  
+</script> 
+
+<script>
+var networks=["geth", "xrpl", "besu-poa", "stellar-docker-testnet"];
+
+    window.onload = function() {
+      var reloading = sessionStorage.getItem("reloading");
+          for (let networkk in networks){
+            reloadn(networkk);
+          };
+      
+  };
+   function reloadn(networkk){ // each time the user reload the BE page, it fetches the configured/started networks
+    fetch(`/request/${networks[networkk]}/path`)
+    .then((response) => response.json())
+    .then(function(data) {
+      const myArray = data.split(",");
+      if(myArray[0] == "Configured" || myArray[0] == "Started"  ) {
+        AddRows(networks[networkk],myArray[0] ,myArray[1] );
+        document.getElementById('init_message').style.display="none";
+        document.getElementById(`loader${networks[networkk]}`).style.display="none";
+        if(myArray[0] == "Started" ){
+          $(`#traffic${networks[networkk]}`).toggleClass('hidden appear');
+          $(`#trtext${networks[networkk]}`).toggleClass('appear hidden');
+           toggles(networks[networkk]);
+        
+        }
+        changeicon(networks[networkk],`icon${networks[networkk]}`);
+      }
+     
+    });
+   };
+
+   $("#deploy").click(function(){
+    $("#steps").slideToggle();
+
+   });
+
+  </script>
+
+
+<script>
+  function toggles(network){ // ui messages
+    $(`#start${network}`).toggleClass('appear hidden')
+    $(`#stop_${network}`).toggleClass('hidden appear')
+    $(`#clean${network}`).toggleClass('appear hidden')
+    
+  };
+
+
+  function view(network){ //drop down the network panel
+    $(`#detail-container${network}`).slideToggle("slow");
+    $(`#iconn${network}`).toggleClass(' is-expanded')
+  };
+
+
+
+</script>
+<script type="text/javascript">
+  abort=true;
+  
+  $("#start_monitoring").click(function(){
+   
+    document.getElementById("btn1").classList.add("is-loading"); // message ui
+    if (abort){
+      $("#loadermon").toggleClass('hidden appear' ); // message ui
+      $("#loader-textmon").toggleClass('hidden appear'); // message ui
+    fetch('/request/mon')
+    .then((response) => response.json()) //start monitoring engine
+    .then(function(data) {
+    console.log(data);
+    $("#loadermon").toggleClass('appear hidden'); // message ui
+    $("#loader-textmon").toggleClass('appear hidden'); // message ui
+    document.getElementById("btn1").classList.remove("is-loading"); // message ui
+    document.getElementById("btn1").disabled=false; // message ui
+    $("#stamon").toggleClass('hidden appear'); // message ui
+    });
+    }
+  else{
+    document.getElementById("btn1").disabled = false;
+    $("#wait1t").toggleClass('appear hidden');
+    document.getElementById("wait1").style.display = "none";
+    $("#stamon").toggleClass('hidden appear');
+    return false;
+  };
+   
+  });
+
+   function start_traffic(net){ 
+    document.getElementById(`id02${net}`).style.display='block';
+    $(`#finished_traffic${net}`).style.display="none";
+    $(`#start_traffic${net}`).click(function(){
+      var numWa  = document.getElementById(`numWa${net}`).value; 
+      var numTok =document.getElementById(`numTok${net}`).value;
+      if (numWa === '' || numTok ===''){
+        alert ("Num Of Wallets and Num of Tokens is required"); //check if the numbers are correct
+        return false;
+      }
+      if ( numTok < 1000){
+        alert ("Number of Tokens is less than 1000");
+        return false;
+      }
+      //UI messages and loaders
+      document.getElementById(`wait2${net}`).style.display = "flex"; 
+      $(`#wait2t${net}`).toggleClass('hidden appear');
+      document.getElementById(`start_traffic${net}`).disabled=true;
+      document.getElementById('close').disabled=true;
+      //end of UI messages
+      fetch(`/traffic/${net}/traffic/${numWa}/${numTok}`) // start traffic generation
+      .then((response) => response.json())
+      .then(function(data) {
+        document.getElementById('close').disabled=false;
+        document.getElementById(`finished_traffic${net}`).style.display='block';
+        console.log(data);
+        document.getElementById(`wait2${net}`).style.display = "none";
+        $(`#wait2t${net}`).toggleClass('appear hidden');
+        $(`#finished_traffic${net}`).toggleClass('hidden appear');
+        document.getElementById(`start_traffic${net}`).disabled=false;
+       
+        if (sessionStorage.getItem(`node${net}`) > 0){
+          sessionStorage.removeItem(`node${net}`);}
+      });
+    });
+  };
+
+  function clean(networkk){ //delete a network
+    fetch(`/request/${networkk}/clean`)
+    .then((response) => response.json())
+    .then(function(data) {
+      console.log(data);
+      document.getElementById(`network-${networkk}`).remove();
+      document.getElementById(`panel-${networkk}`).remove();
+      document.getElementById(`id02${networkk}`).remove();
+      
+    });
+  };
+
+  function stop(networkk){
+    fetch(`/request/${networkk}/stop`)
+    .then((response) => response.json())
+    .then(function(data) {
+      console.log(data);
+      toggles(networkk);
+      document.getElementById(`status_${networkk}`).innerHTML="Configured";
+      document.getElementById("btn1").disabled = false;
+      document.getElementById("btn1").title = "Configure a network";
+    });
+  };
+ 
+</script>
+
+
+<script>
+  //dropdown the configuration panel. on click of the deploy button it checks if the monitoring page is configured or not
+  function showDetails(){ 
+    $('#slider1').removeClass('hidden');
+  }
+
+  const buttonForm = document.getElementById("btn1");
+  
+  buttonForm.addEventListener("click",(event) => {
+    event.preventDefault();
+      document.getElementById("btn1").disabled=true;
+      fetch('/docker/management/is_monitoring_configured')
+      .then((response) => response.json())
+      .then(function(data) {
+        if(data == "False") {
+          document.getElementById('id01').style.display='block'
+        }
+        else{
+          configureNetwork();
+          document.getElementById("btn1").disabled=false;
+        };
+        });
+    });
+  
+        //Append new rows when a network is configured
+        function AddRows(network, status, num_) {
+          var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+          var row = table.insertRow(0);
+          row.id = `network-${network}`; //network id
+          var cel0=row.insertCell(0);
+          cel0.innerHTML = `<a role="button" onclick="view('${network}')"  >
+            <span id="iconn${network}" class="iconify-inline icon "><i class="mdi mdi-chevron-right mdi-24px"></i></span> 
+          </a>`; //the dropdown button
+          var cel= row.insertCell(1);
+          cel.innerHTML=`  <i id="icon${network}" class="cf cf-eth"></i>`;
+          changeicon(network,`icon${network}`); //add the requested network icon
+          var cell1 = row.insertCell(2);
+          cell1.innerHTML=network;
+          var cell11 = row.insertCell(3);
+          cell11.id=`numnodes${network}`; //add the configured number of nodes
+          cell11.innerHTML=`<span value="${num_}"> ${num_} </span>`;
+          var cell2 = row.insertCell(4);
+          cell2.id=`status_${network}`; // the network's status "Configured/Started"
+          cell2.innerHTML=status;
+          var cel3= row.insertCell(5);
+          cel3.className="is-actions-cell"; // buttons to control the network
+          cel3.innerHTML=` 
+          <div class="buttons is-center">
+          <button title="View advanced options for the network" id="viewgraph${network}" onclick="view('${network}')" class="button is-small is-primary" type="button">
+            <span class="icon"><i class="mdi mdi-eye"></i></span>
+          </button>
+          <button title="Start the Network" id="start${network}" onclick="startNetwork('${network}',${num_})" class="button is-small is-success jb-moda appear" data-target="sample-modal" type="button">
+            <span class="icon"><i id="starticon${network}" class="mdi mdi-arrow-right-drop-circle"></i></span>
+          </button>
+          <button title="Stop the Network" id="stop_${network}" onclick="stop('${network}')" class="button is-small is-danger jb-moda hidden" data-target="sample-modal" type="button">
+            <span class="icon"><i id="stopicon${network}" class="mdi mdi-trash-can"></i></span>
+          </button>
+          <button title="Clean the network" id="clean${network}"  onclick="clean('${network}')" class="button is-small is-warning jb-modal appear" data-target="sample-modal" type="button">
+            <span class="icon"><i  class="mdi mdi-close-box"></i></span>
+          </button>
+          <button id="loader${network}" class="button button-ghost-background jb-modal is-small is-loading" style="background-color:transparent; border-color:transparent;" > </button>
+
+        </div>
+        `; 
+        var cel4= row.insertCell(6); // Traffic generation button
+        cel4.innerHTML=`<h6 id="trtext${network}" class="is-6 title is-semibold is-light appear"> Press start to generate traffic </h6>
+        <button id="traffic${network}"  onclick="start_traffic('${network}')"  class="button k-button is-primary is-small is-semibold hidden" type="button">
+          Traffic Generation
+        </button>`
+        // add modal traffic generator. For each netwrok create new modal to start traffic generation
+        document.getElementById("modall").innerHTML+=`
+        <div id="id02${network}" class="w3-modal">
+          <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:100%">
+            <div class="w3-container w3-black">
+              <span id="close" onclick="document.getElementById('id02${network}').style.display='none'; abort=false;" class="w3-button w3-display-topright">&times;</span>
+            <br>
+            <h2 class="title is-light is-2 is-semibold has-text-centered "> ${network} Traffic Generation </h2>
+             <div class="container steps" >
+               <div class="columns is-vcentered ">
+                          <div style="margin-left:20%"></div>
+                     
+                                 <div class="column is-5" style=" margin-bottom:-4vh; width:20%;">
+                                   <div class="control-material is-secondary">      
+                                     <input id="numWa${network}" class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required>
+                                     <span class="material-highlight"></span>
+                                     <span class="bar"></span>
+                                     <label>Number of Wallets</label>
+                                    </div>
+                                  </div>
+                               <div class="column is-6" style=" margin-bottom:-4vh; width:20%;">
+                                 <div class="control-material is-secondary">      
+                                   <input id="numTok${network}" class="material-input " type="number" min="1" oninput="validity.valid||(value='');" required></input>
+                                   <span class="material-highlight"></span>
+                                   <span class="bar"></span>
+                                   <label>Number of Tokens</label>
+                               </div>
+                             </div>
+                     <div class="column is-3" style="margin-left:4vw;">
+                       <button id="start_traffic${network}" class="button k-button is-primary is-fat rounded"> Start Traffic Generator! </button>
+                     </div>
+                     <br>
+                    </div>
+                     <row>
+                     <div class="column has-text-centered">
+                       <div class="mt-3" >
+                        <div id="wait2${network}" class=" loader  appear has-text-centered is-centered" style="display:none;"> </div>
+                        <div id="wait2t${network}" class="hidden  has-text-centered is-centered is-light is-semibold">Loading...</div>
+
+                        <h5 id="finished_traffic${network}" class="is-light is-semibold title is-6 hidden"> Finished! <br> Now visit Monitoring page or check Traffic logs by pressing the view icon. </h5>
+                     </div>
+                    </row>
+               
+          
+                </div>
+              </div>
+          </div>
+        </div>
+</div>
+        `;
+
+        // Panel. For each row create the panel with the network's information. This just creates the header-tabs and on click it fetch the requested data
+        var row1 = table.insertRow(1);
+        row1.id = `panel-${network}`;
+
+        var pcel0=row1.insertCell(0);
+        pcel0.setAttribute("colspan", "8");
+        pcel0.innerHTML=` <div id="detail-container${network}" class="detail-container" style="display:none;">
+          <div class="content-wrapper is-large" style="display:flex;
+          flex-direction:column;">
+
+            <div class="tab flying-wrapper">
+              <div class="flying-tabs-container">
+                <div class="flying-tabs" >
+              <button class="tablinks "   onclick="openCity(event, 'Network_Details${network}'); node('${network}');" id="node${network}">Network Details</button>
+              <button id="traff${network}"  class="tablinks " onclick="openCity(event, 'Traffic_Details${network}'); show_traf_box('${network}');">Traffic Details</button>
+              <button id="graph${network}"  class="tablinks " onclick="openCity(event, 'Graph${network}'); draw('${network}');">Network Graph</button>
+            </div>
+            <div id="slider1"  class="slider hidden" >  </div>
+
+              <div id="Network_Details${network}" class="tabcontent">
+                <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+                <div class="columns " style="display:block;">
+                  <!-- ICO Terms -->
+                 
+                      <div id="trf-box${network}" class="text-content  has-text-centered " style="padding-top:3vh">
+                        
+                </div>
+              </div>
+              </div>
+  
+             
+              <div id="Traffic_Details${network}" class="tabcontent">
+                <span id="traff${network}"  onclick="this.parentElement.style.display='none'; show_traf_box('${network}');" class="topright">&times</span>
+                <div class="columns " style="display:block;">
+                  <!-- ICO Terms -->
+                 
+                      <div id="trf-2${network}" class="text-content  has-text-centered " style="padding-top:3vh"> </div>
+              </div>
+            </div>
+
+            <div id="Graph${network}" class="tabcontent">
+              <span id="graph${network}"  onclick="this.parentElement.style.display='none'; draw('${network}');" class="topright">&times</span>
+              <div class="columns " style="display:block;">
+                <!-- ICO Terms -->
+               
+                    <div id="mynetwork_${network}" class="text-content  has-text-centered " style="padding-top:3vh; width:50vw; height:60vh;"> </div>
+            </div>
+          </div>
+          </div>
+
+    
+        
+  </div>`;   
+};
+
+
+//on configure create cell on table with number of nodes
+</script>
+
+<script>
+   
+
+
+//This function starts a network after the configuration process
+function startNetwork(network, num_of_nodes){
+  var value = event.value;
+  toggles(network);
+  document.getElementById(`loader${network}`).style.display="block";
+  fetch(`/request/${network}/start/${num_of_nodes}`)
+  .then(data => {
+    document.getElementById(`status_${network}`).innerHTML="Started";
+    $(`#traffic${network}`).toggleClass('hidden appear');
+    $(`#trtext${network}`).toggleClass(' appear hidden');
+    
+    
+    if (!data.ok) {
+      throw new Error("HTTP error " + data.status);
+  }
+    return data.json()})
+  .then((response) => {
+    console.log(response);
+    document.getElementById(`loader${network}`).style.display="none";
+    document.getElementById("btn1").disabled=true;
+    alert("Network Started!");
+    })
+  .catch((err) => console.error(err));
+
+};
+
+// This method configures a network in a proper way.
+function configureNetwork(){ 
+
+  document.getElementById("init_message").style.display="none";
+  document.getElementById("stamon").style.display="none";
+  document.getElementById("sta").style.display="hidden";
+  network  = document.getElementById('selected').value;
+  if (network ==="Select a Network"){
+    alert("Please select a valid network!");
+    return false;
+  }
+  num_of_nodes=document.getElementById('num_of_nodes').value;
+  if (num_of_nodes === ''){
+    alert ("Num Of Nodes is required");
+    return false;
+  }
+  let url = `/request/${network}/configure/${num_of_nodes}`;
+  document.getElementById("wait1").style.display = "flex";
+  $("#wait1t").toggleClass('hidden appear');
+  document.getElementById("btn1").disabled=true;
+  fetch(url, {
+  method: "POST",
+  })
+  .then(data => {
+    console.log("ok")
+
+    if (!data.ok) {
+      throw new Error("HTTP error " + data.status);
+  }
+    return data.json()})
+  .then((response) => {
+   document.getElementById("btn1").disabled=false;
+   console.log(response);
+   document.getElementById("wait1").style.display = "none";
+   $("#wait1t").toggleClass('appear hidden');
+   $("#sta").toggleClass('hidden appear');
+   
+
+   $("#array").toggleClass('hidden appear');
+
+   if (sessionStorage.getItem('stats')>0) { //on configure new network remove previous stats
+    sessionStorage.removeItem('stats');
+   }
+   if ($(`#network-${network}`).length) // on reconfigure remove the previous configured network
+   {
+    $(`#network-${network}`).remove();
+    $(`#panel-${network}`).remove();
+  }
+   
+   AddRows(network, "Configured", num_of_nodes);
+   document.getElementById(`loader${network}`).style.display="none";
+   changeicon(network,`icon${network}`);
+   })
+  .catch((err) => console.error(err));
+};
+
+
+
+
+  // don't let the user to reconfigure a started network. Notify him that he should stop it before reconfigure it
+  $("#selected").change(function(){
+    id=document.getElementById('selected').value;
+    document.getElementById("btn1").disabled = false;
+    document.getElementById("btn1").title="Configure the network";
+
+    if (document.getElementById(`status_${id}`) != null && document.getElementById(`status_${id}`).innerHTML === 'Started'){
+      document.getElementById("btn1").disabled = true;
+      document.getElementById("btn1").title="Please stop the selected network if you want to re-configure it";
+      return false;
+    }
+    else{
+      return;
+    }
+  });
+
+// change the blockchain icon on the BE panel and the configuration panel
+function changeicon(network, icon){
+  if (network==="xrpl"){
+    document.getElementById(icon).className="cf cf-xrp";
+  };
+  if (network==="stellar-docker-testnet"){
+    document.getElementById(icon).className="cf cf-xlm";
+  };
+  if (network==="besu-poa"){
+    document.getElementById(icon).className="cf cf-xyo";
+  };
+  if (network==="geth"){
+    document.getElementById(icon).className="cf cf-eth";
+  };
+};
+
+</script>
+<script>
+  //Got from w3schools. is the functionality for changing the tabs on click
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  // Get the element with id="defaultOpen" and click on it
+
+
+  // Create graph with vis lib
+  function draw(network){
+
+  fetch(`/docker/management/graph/${network}`)
+  .then(data => {return data.json()})
+  .then((response) => {
+    const net_nodes=response;
+    console.log(response);
+    var nodes =[];
+    i=0;
+    for (var node in net_nodes){
+      nodes.push({id:i, label: net_nodes[node], font: { size: 20, color: "white", face: "sans-serif" }, group:i, margin: { top: 10, right: 20, bottom: 40, left: 30 }, });
+      i++;
+    }
+    var nodes= new vis.DataSet(nodes);
+    var nodes_len=net_nodes.length;
+    var edges = [];
+   for (var i = 0; i < nodes_len; i++) {
+        for (var j = 0; j < nodes_len; j++) {
+          if (i != j){
+           edges.push({from: i, to: j});
+          }
+        }
+    }
+    
+    var edges =new vis.DataSet(edges);
+    var container = document.getElementById(`mynetwork_`+network);
+    var data = {
+      nodes: nodes,
+      edges: edges,
+    };
+    var options = {
+      nodes:{
+        shape:"dot",
+        fontSize: 50
+      },
+      groups: {
+        delay: 50,
+        fontColor: "black",
+        font: 50, 
+        fontFace: "sans-serif",
+  
+      },
+   
+      physics:{
+        barnesHut:{
+          gravitationalConstant: -6000,
+          springConstant:0.02
+        }
+      },
+      smoothCurves: {dynamic:false},
+      autoResize: true,
+    
+    };
+    n = new vis.Network(container, data, options);
+    n.stabilize();
+
+    });
+  
+
+   
+
+  }
+
+
+  </script>
+  
+
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
+{%endblock%}
+

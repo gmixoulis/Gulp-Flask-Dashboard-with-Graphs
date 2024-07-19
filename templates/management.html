@@ -1,0 +1,189 @@
+{%extends 'base.html'%}
+
+{% block title %}Management{% endblock %}
+
+{% block content %}
+    
+            <div class="hero-body has-text-centered">
+                <div class="columns">
+                    <div class="column is-6 is-offset-3">
+                        <div class="management-image">
+                            <img src="../static/img/illustrations/world.svg">
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section x-data="initRoadmap()" x-init="setupRoadmap()" id="roadmap" class="main-timeline" style="padding-top:-5vw; margin-top:0" >
+            <div class="hero-body has-text-centered">
+                <div class="columns" >
+                
+                    <div class="column is-6 is-offset-3">
+                        <div class="divider is-centered"> </div>
+                        <h2 class="title is-2 is-light is-semibold is-spaced main-title">How to use the BBF</h2>
+                        <h5 class="subtitle is-5 is-light is-thin" style="text-align:justify;">
+                            The following steps introduce a step-by-step procedure of the Blockchain Benchmarking Framework (BBF) usage. It is important to follow the step-guide and not skip any step.
+                            Each step will redirect you to the proper page where you will find more information for each functionality.
+                        </h5>
+                        <!-- CTA -->
+                 
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <div>
+                        <span class="item-title">Step 1</span>
+                        <span class="item-content" style="text-align:justify;">
+                            First you need to configure and start the monitoring engine. This step is one-time step and works for all the blockcchain networks. 
+                            The following button will redirect you to the proper page where you should click the Start Button under the Monitoring tab.
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+        
+                          <a href="{{url_for('monitoring')}}"  target="_blank">
+                            Start Monitoring Engine
+                          </a>
+                          </span>
+                    </div>
+                </li>
+                
+                <li>
+                    <div>
+                        <span class="item-title">Step 2</span>
+                        <span class="item-content" style="text-align:justify;">
+                         At this point the Monitoring engine is working and it is waiting to monitor the traffic in the blockchain network. 
+                         Thus, it is important to configure and start a selected blockchain network. The following button will redirect you to the proper page where you
+                         will be able to configure your prefered blockchain. 
+                        </span>
+                        <span class="more">
+                                <i data-feather="file-text"></i>
+                          <a href="{{url_for('benchmarking_engine')}}" target="_blank">
+                            Configure a Blockchain Network
+                        
+                          </a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span class="item-title">Step 3</span>
+                       
+                        <span class="item-content" style="text-align:justify;">
+                           At this stage you have to start the blockchain network you selected previously. It is important to start the blockchain network if you want to move to the next steps.
+                           You can configure and start more than two networks at the same time or your can stop one and the others will be still running. If you want to start or re-start the network go to the proper page by using the following button.
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                             <a href="{{url_for('benchmarking_engine')}}" target="_blank">
+                               Start a Blockchain Network
+                                
+                              </a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span class="item-title">Step 4</span>
+                        <span class="item-content" style="text-align:justify;">
+                            We have developed our own traffic generator where the network generates random transactions in random generated accounts. You have to select a number of random accounts to be generated and number of transactions
+                            by using the following button. This will redirect you to the proper page.
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="{{url_for('benchmarking_engine')}}"  target="_blank">
+                               Start Traffic Generator
+                              </a>
+                        </span>
+                    </div>
+                </li>
+                
+                <li>
+                    <div>
+                        <span class="item-title">Step 5</span>
+                        <span class="item-content" style="text-align:justify;">
+                            This step is optional. In this step you can check the grafana and docker logs by using the following button which will redirect you to the proper page.
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="{{url_for('monitoring')}}"  target="_blank">
+                               Logs / Grafana
+                              </a>
+                        </span>
+                    </div>
+                </li>
+                
+                <li>
+                    <div>
+                        <span class="item-title">Step 6</span>
+                        <span class="item-content" style="text-align:justify;">
+                            In this step you can check the running networks and also get some more user-friendly information about the blockchain networks.  
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="{{url_for('management')}}"  target="_blank">
+                               Docker APIs
+                              </a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span class="item-title">Step 7</span>
+                        <span class="item-content" style="text-align:justify;">
+                            Stoping a network will enable you to restart it later, but this does not mean that it is removed from the disk. If you want to clean 
+                            some space you need to clean the stopped network. Cleaning a network means it will need to re-configure it later.
+                            The following button will redirect you to proper page.
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="{{url_for('benchmarking_engine')}}" target="_blank">
+                            Clean Network
+                              </a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span class="item-title">Step 8</span>
+                        <span class="item-content" style="text-align:justify;">
+                            You can stop any time any running network. You can stop it in case you do not need it anymore or if you want to free CPU and RAM. 
+                            Follow the instructions under the STOP tab.
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="{{url_for('benchmarking_engine')}}" target="_blank">
+                               Stop Network
+                              </a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span class="item-title">Step 9</span>
+                        <span class="item-content" style="text-align:justify;">
+                            As final step you can stop the monitoring engine (stop Grafana, Dozzle etc.) and free the resources.
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="{{url_for('monitoring')}}" target="_blank">
+                              Stop Monitoring
+                              </a>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section>
+
+            <div class="management-end">
+                <img src="../static/img/illustrations/roadmap-end.svg" alt="">
+            </div>
+    
+           
+        </section>
+    
+    </div>
+    {%endblock%}

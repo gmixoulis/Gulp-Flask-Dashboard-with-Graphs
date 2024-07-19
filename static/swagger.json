@@ -1,0 +1,643 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Institute For the Future",
+    "version": "1.0.0",
+    "title": "Action Panel for BBF",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "APIs",
+      "description": "API for Control panel"
+    }
+  ],
+  "paths": {
+    "/docker/management/running_networks": {
+      "get": {
+        "tags": [
+          "Running_Networks"
+        ],
+        "summary": "Returns the active networks",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+    },
+    "/docker/management/is_monitoring_configured": {
+      "get": {
+        "tags": [
+          "Check_If_Monitoring_Configured"
+        ],
+        "summary": "Returns a flag if the monitoring is configured or not",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/flag"
+            }
+          }
+        }
+      }
+    },
+    
+    "/request/{network}/status": {
+      "get": {
+        "tags": [
+          "Control"
+        ],
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        "summary": "Returns Nodes that are active for the current network",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+    },
+     
+    "/request/{network}/path": {
+      "get": {
+        "tags": [
+          "Control"
+        ],
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        "summary": "Returns Nodes that are active for the current network",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+    },
+    
+      "/request/{network}/start/{NUM_OF_NODES}": {
+      "get": {
+        "tags": [
+          "Control"
+        ],
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        },{
+        "in": "path",
+          "name":"NUM_OF_NODES",         
+          "required": true,
+           "description": "Choose the prefered number of nodes to be started",
+           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        }
+      ],
+        "summary": "Start new network",
+        
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK Started",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/request/{network}/configure/{NUM_OF_NODES}": {
+      "post": {
+        "summary": "Configure 10 nodes",
+        "tags": [
+          "Control"
+        ],
+         "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        },
+        {
+          "in": "path",
+          "name":"NUM_OF_NODES",         
+          "required": true,
+           "description": "Choose the prefered number of nodes to be configured",
+           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        }
+      ],
+        
+        "produces": [
+          "string"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK Configured",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/request/{network}/configure/{NUM_OF_NODES_BN}/{NUM_OF_NODES_VN}": {
+      "post": {
+        "summary": "Configure 10 nodes",
+        "tags": [
+          "Control"
+        ],
+         "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        },
+        {
+          "in": "path",
+          "name":"NUM_OF_NODES_BN",         
+          "required": true,
+           "description": "Choose the prefered number of BOOT nodes to be configured",
+           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        },
+        {
+          "in": "path",
+          "name":"NUM_OF_NODES_VN",         
+          "required": true,
+           "description": "Choose the prefered number of VALIDATOR nodes to be configured",
+           "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        }
+      ],
+        
+        "produces": [
+          "string"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK Configured",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/request/{network}/stop": {
+      "get": {
+        "summary": "Stop the network and nodes",
+        "tags": [
+          "Control"
+        ],
+        
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "OK Stoped",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Book Request not found."
+          }
+        }
+      }
+    },
+    "/request/{network}/clean": {
+      "get": {
+        "summary": "Clean the network and nodes",
+        "tags": [
+          "Control"
+        ],
+        
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+           "description": "Choose the prefered Blockchain Network",
+           "schema":{"$ref":"#/components/schemas/network"}  
+        }],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "OK Cleaned",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Book Request not found."
+          }
+        }
+      }
+    },
+    "/request/mon": {
+      "get": {
+        "tags": [
+          "Monitoring"
+        ],
+        "parameters":[{
+          "in": "path"
+          
+        }],
+        "summary": "Returns Monitoring logs for configure action",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+    },
+  
+  "/request/mon-stop": {
+    "get": {
+      "summary": "Stop Monitoring",
+      "tags": [
+        "Monitoring"
+      ],
+
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "204": {
+          "description": "OK stoped",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        },
+        "400": {
+          "description": "Failed. Misunderstood Request."
+        },
+        "404": {
+          "description": "Failed. Book Request not found."
+        }
+      }
+    }
+  },
+
+  "/traffic/{network}/traffic/{num_of_wallets}/{num_of_tokens}": {
+      "get": {
+        "tags": [
+          "Traffic"
+        ],
+        "parameters":[{
+          "in": "path",
+          "name":"network",         
+          "required": true,
+          "description": "Choose the prefered Blockchain Network",
+          "schema":{"$ref":"#/components/schemas/network"}  
+        },
+        {
+          "in": "path",
+          "name":"num_of_wallets",         
+          "required": true,
+          "description": "Choose number of wallets to be generated",
+          "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        },
+        {
+          "in": "path",
+          "name":"num_of_tokens",         
+          "required": true,
+          "description": "Choose number of tokens to be generated",
+          "schema":{"$ref":"#/components/schemas/NUM_OF_NODES"}  
+        }],
+        "summary": "Returns Traffic log",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/Array"
+            }
+          }
+        }
+      }
+  },
+
+  "/traffic/{network}/node": {
+    "get": {
+      "tags": [
+        "Traffic"
+      ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+        "description": "Choose the prefered Blockchain Network",
+        "schema":{"$ref":"#/components/schemas/network"}  
+      }],
+      "summary": "Returns Node logs",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
+  "/traffic/wallets/{network}": {
+    "get": {
+      "tags": [
+        "Traffic"
+      ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+        "description": "Choose the prefered Blockchain Network",
+        "schema":{"$ref":"#/components/schemas/network"}  
+      }],
+      "summary": "Returns Wallets/ Public Keys",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
+  "/traffic/{network}/acc/{public_key}": {
+    "get": {
+      "tags": [
+        "Traffic"
+      ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+        "description": "Choose the prefered Blockchain Network",
+        "schema":{"$ref":"#/components/schemas/network"}  
+      },
+      {
+        "in": "path",
+        "name":"public_key",         
+        "required": true,
+        "description": "Choose the prefered public key",
+        "schema":{"$ref":"#/components/schemas/public_key"}  
+      }
+    ],
+      "summary": "Returns Node logs",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
+
+  "/request/list": {
+    "get": {
+      "tags": [
+        "Print Available Blockchain Networks"
+      ],
+      "summary": "Returns all the available networks",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
+
+  "/docker/management/stats": {
+    "get": {
+      "tags": [
+        "Return current docker stats"
+      ],
+      "summary": "Returns all the available networks",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
+
+  "/docker/management/graph/{network}": {
+    "get": {
+      "tags": [
+        "Return current docker stats"
+      ],
+      "parameters":[{
+        "in": "path",
+        "name":"network",         
+        "required": true,
+        "description": "Choose the prefered Blockchain Network",
+        "schema":{"$ref":"#/components/schemas/network"}  
+      }],
+      "summary": "Returns all the available networks",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/Array"
+          }
+        }
+      }
+    }
+  },
+
+  "/docker/management/list": {
+    "get": {
+      "tags": [
+        "Return current docker stats"
+      ],
+      "summary": "Returns all the available networks",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/list_of_nodes"
+          }
+        }
+      }
+    }
+  } 
+},
+  "components": {
+    "schemas": {
+      "network": {
+        "type":"string",
+        "properties":{
+          "type":"string",
+          "format":"string"  }       
+      },
+      
+      "flag":{
+        "type":"boolean"
+      },
+      "public_key": {
+        "type":"string",
+        "properties":{
+          "type":"string",
+          "format":"string"  }       
+      },
+      "node": {
+        "type": "object",
+        "properties": {
+          "Container_name": {
+            "type": "string",
+            "format": "string"
+          },
+          "Container_ID": {
+            "type": "string",
+            "format": "string"
+          },
+          "Container_status": {
+            "type": "string",
+            "format": "string"
+          },
+          "Container_image": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      },
+      "list_of_nodes": {
+        "type": "object",
+        "properties": {
+          "node": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/node"
+            }
+          }
+        }
+      },
+      "container": {
+        "type": "object",
+        "properties": {
+          "Container_name": {
+            "type": "string",
+            "format": "string"
+          },
+          "Network_Stats": {
+            "type": "string",
+            "format": "string"
+          },
+          "memory_usage_percentage": {
+            "type": "number",
+            "format": "number"
+          },
+          "CPU_ucsage_percent": {
+            "type": "number",
+            "format": "number"
+          },
+          "Uptime": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      },
+      "list_of_containers": {
+        "type": "object",
+        "properties": {
+          "node": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/container"
+            }
+          }
+        }
+      },
+      "Array": {
+        "type": "array",
+        "items": {
+          "type": "string"
+          }
+        },
+        "NUM_OF_NODES": {
+          "type": "integer",
+          "items": {
+            "type": "string"
+            }
+          }
+      }
+    
+  }
+}

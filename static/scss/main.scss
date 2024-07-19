@@ -1,0 +1,35 @@
+/*! core.scss | Krypton | CSS Ninja */
+
+/* ==========================================================================
+Core 
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. CSS Imports
+=============================================================================
+***/
+
+/* ==========================================================================
+0. CSS Imports
+========================================================================== */
+
+@import 'abstracts/theme-default';
+@import 'abstracts/colors';
+@import 'abstracts/animations';
+@import "../node_modules/bulma-responsive-tables/bulma-responsive-tables.scss";
+@import "../node_modules/bulma/bulma.sass";
+@import url('https://cdn.jsdelivr.net/npm/bulma-switch@2.0.4/dist/css/bulma-switch.min.css');
+
+@import 'components/buttons';
+@import 'components/hamburger';
+@import 'components/forms';
+@import 'layout/_layout';
+@import 'layout/features';
+@import 'layout/timeline';
+@import 'layout/team';
+@import 'layout/faq';
+@import 'layout/footer';
+@import 'layout/pageloader';
+@import 'layout/responsive';

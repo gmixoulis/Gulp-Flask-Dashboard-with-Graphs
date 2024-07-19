@@ -1,0 +1,634 @@
+/*! _features.scss | Krypton | CSS Ninja */
+
+/* ==========================================================================
+Features elements styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Video pulsating button
+1. Icon box features
+2. Side features
+3. Flying tabs
+4. Countdown
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Video pulsating button
+========================================================================== */
+
+.video-button {
+    position: relative;
+    height: 54px;
+    width: 54px;
+
+    @include secondary-gradient-right;
+
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    cursor: pointer;
+
+    //Play icon
+    img {
+        position: relative;
+        display: block;
+        width: 24px;
+        height: 24px;
+        left: 2px;
+        z-index: 3;
+    }
+
+    //Pulsating pseudo element
+    &:after {
+        content: '';
+        position: absolute;
+        top: calc(50% - 12px);
+        left: calc(50% - 12px);
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+
+        @include secondary-gradient-right;
+
+        animation: pulse 1.6s infinite;
+        animation-duration: 2s;
+        transform-origin: center center;
+        z-index: 0;
+    }
+}
+
+/* ==========================================================================
+1. Icon box features
+========================================================================== */
+
+.feature {
+    text-align: center;
+
+    img {
+        display: block;
+        margin: 0 auto;
+        max-height: 120px;
+    }
+
+    h4 {
+        margin-top: 10px;
+        font-family: 'Cabin', sans-serif;
+    }
+
+    p {
+        font-family: 'Cabin', sans-serif;
+        font-size: .9rem;
+        opacity: 0.8;
+    }
+}
+
+/* ==========================================================================
+2. Side features
+========================================================================== */
+
+//Featured image
+.side-feature {
+    max-height: 500px;
+}
+
+//Feature content
+.side-feature-content {
+    .title {
+        display: block;
+        align-items: center;
+    }
+
+    //icon
+    img {
+        max-height: 40px;
+        width: 40px;
+    }
+
+    //paragraph
+    p {
+        //light modifier
+        &.is-light {
+            color: $white;
+  
+        }
+
+        //light blue modifier
+        &.is-light-blue {
+            color: #d5ebff;
+        }
+    }
+
+    //title
+    h3 span {
+        padding: 0 10px;
+    }
+}
+
+
+.hidden{
+    display: none;
+}
+.appear{
+    display: block;
+}
+
+.steps-container{
+    //credits: https://levelup.gitconnected.com/create-a-multi-step-form-using-html-css-and-javascript-30aca5c062fc
+        margin: 0 auto;
+        font-family: "Cabin", sans-serif;
+        
+  .steps{    
+ 
+
+    #multi-step-form-container {
+        margin-top: 5rem;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pl-0 {
+        padding-left: 0;
+    }
+
+    .submit-btn {
+        border: 1px solid #0e9594;
+        background-color: #0e9594;
+    }
+    .mt-3 {
+        margin-top: 2rem;
+    }
+    #mt-3{
+        margin-top:10px;
+    }
+    .d-none {
+        display: none;
+    }
+    .form-step {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        padding: 3rem;
+        border-style: groove;
+        border-color: #fff;
+        -webkit-box-shadow:0 0 20px blue; 
+        -moz-box-shadow: 0 0 20px blue; 
+        box-shadow:0 0 20px blue;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .font-normal {
+        font-weight: normal;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    ul.form-stepper {
+        counter-reset: section;
+        margin-bottom: 3rem;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    ul.form-stepper .form-stepper-circle {
+        position: relative;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    ul.form-stepper .form-stepper-circle span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .form-stepper-horizontal {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    ul.form-stepper > li:not(:last-of-type) {
+        margin-bottom: 0.625rem;
+        -webkit-transition: margin-bottom 0.4s;
+        -o-transition: margin-bottom 0.4s;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+        transition: margin-bottom 0.4s;
+    }
+    .form-stepper-horizontal > li:not(:last-of-type) {
+        margin-bottom: 0 !important;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .form-stepper-horizontal li {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        -webkit-box-align: flex-start;
+        -ms-flex-align: flex-start;
+        align-items: flex-start;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .form-stepper-horizontal li:not(:last-child):after {
+        position: relative;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        height: 1px;
+        content: "";
+        top: 32%;
+        .mt-3 {
+            margin-top: 2rem;
+        }
+    }
+    .form-stepper-horizontal li:after {
+        background-color: #dee2e6;
+    }
+    .form-stepper-horizontal li.form-stepper-completed:after {
+        background-color: #4da3ff;
+    }
+    .form-stepper-horizontal li:last-child {
+        flex: unset;
+    }
+    ul.form-stepper li a .form-stepper-circle {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin-right: 0;
+        line-height: 1.7rem;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.38);
+        border-radius: 50%;
+    }
+    .form-stepper .form-stepper-active .form-stepper-circle {
+        background-color: #4361ee !important;
+        color: #fff;
+    }
+    .form-stepper .form-stepper-active .label {
+        color: #4361ee !important;
+    }
+    .form-stepper .form-stepper-active .form-stepper-circle:hover {
+        background-color: #4361ee !important;
+        color: #fff !important;
+    }
+    .form-stepper .form-stepper-unfinished .form-stepper-circle {
+        background-color: #f8f7ff;
+    }
+    .form-stepper .form-stepper-completed .form-stepper-circle {
+        background-color: #0e9594 !important;
+        color: #fff;
+    }
+    .form-stepper .form-stepper-completed .label {
+        color: #0e9594 !important;
+    }
+    .form-stepper .form-stepper-completed .form-stepper-circle:hover {
+        background-color: #0e9594 !important;
+        color: #fff !important;
+    }
+    .form-stepper .form-stepper-active span.text-mutedd {
+        color: #fff !important;
+    }
+    .form-stepper .form-stepper-completed span.text-mutedd {
+        color: #fff !important;
+    }
+    .form-stepper .label {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        color: white;
+    }
+    .form-stepper a {
+        cursor: default;
+        
+    }
+    .mt-3 {
+        margin-top: 2rem;
+    }
+ }
+
+}
+
+
+
+
+/* ==========================================================================
+3. Flying tabs
+========================================================================== */
+
+//Container
+.flying-tabs-container {
+    max-width: 720px;
+    margin: 0 auto;
+
+    //tabs
+    .flying-tabs {
+        //tab-item
+        .flying-child {
+            display: inline;
+            text-align: center;
+            cursor: pointer;
+            color: #1ee0d5;
+
+            &:hover a {
+                color: lighten(#1e004f, 15%);
+            }
+
+            &.is-active a {
+                color: $white !important;
+            }
+        }
+
+        //link element
+        a {
+            font-family: 'Cabin', sans-serif;
+            display: inline-block;
+            width: 24.4%;
+            padding: .75rem 0;
+            text-decoration: none;
+            color: #1ee0d5;
+            pointer-events: none;
+            transition: all .3s;
+        }
+
+        //Settings for underline
+        .tab-xrpl.is-active ~ .slider{
+            margin-left: 75%;
+        }
+
+        .tab-geth.is-active ~ .slider {
+            margin-left: 25%;
+        }
+
+        .tab-stellar-docker-testnet.is-active ~ .slider {
+            margin-left: 50%;
+        }
+
+        .tab-besu-poa.is-active ~ .slider {
+            margin-left: 0%;
+        }
+
+        //Flying underline
+        .slider {
+            height: 2px;
+            border-radius: 10px;
+            width: 25%;
+            margin: 0;
+
+            @include primary-gradient-top;
+
+            border: none;
+            transition: .3s ease-in-out;
+        }
+    }
+}
+
+//Tab content
+.tab-content {
+    display: none;
+    min-height: 312px;
+    margin-top: 40px;
+
+    //Active state
+    &.is-active {
+        display: inherit;
+    }
+
+    //Side image
+    img {
+        filter: brightness(0) invert(1);
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        margin-top:auto;
+    }
+
+    //Countdown card
+    .ico-card {
+        width: 100%;
+
+        @include primary-gradient-right;
+
+        color: $white;
+        padding: 30px 40px;
+        border-radius: 6px;
+        animation-delay: .3s;
+
+        //Progress bar
+        .progress-block {
+            .progress-tags {
+                display: flex;
+                padding: 20px 30px;
+
+                div {
+                    position: relative;
+                    text-align: right;
+                    font-family: 'Cabin', sans-serif;
+                    font-size: .65rem;
+                    text-transform: uppercase;
+
+                    &:before {
+                        content: '';
+                        height: 26px;
+                        width: 1px;
+                        background: $smoke-white;
+                        position: absolute;
+                        top: 25px;
+                        right: 0px;
+                        transform: translateX(50%);
+                    }
+
+                    &:first-child, &:nth-child(2) {
+                        flex-grow: 2;
+                    }
+
+                    &:nth-child(3) {
+                        flex-grow: 1;
+                    }
+                }
+            }
+
+            //Color
+            progress {
+                &.ico-progress {
+                    &::-webkit-progress-value {
+                        @include secondary-gradient-right;
+                    }
+
+                    &::-moz-progress-bar {
+                        @include secondary-gradient-right;
+                    }
+
+                    &::-ms-fill {
+                        @include secondary-gradient-right;
+                    }
+                }
+            }
+        }
+
+        //Button
+        .button-block {
+            text-align: center;
+            margin: 20px 0 10px 0;
+            padding: 0 15%;
+        }
+
+        //Icons
+        .icon-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 0;
+
+            i {
+                margin: 0 5px;
+                color: $smoke-white;
+            }
+        }
+    }
+
+    //Text content
+    .text-content {
+        p {
+            animation-delay: .15s;
+            padding: 10px 0;
+            color: $white;
+            font-family: 'Cabin', sans-serif;
+            font-weight: 300;
+            
+        }
+
+        //Bullet list
+        .custom-bullet-list {
+            li::before {
+                content: "೦ ";
+                color: $secondary;
+            }
+
+            li {
+                padding: 10px 0;
+                color: $white;
+                font-family: 'Cabin', sans-serif;
+                font-weight: 300;
+
+                &:first-child {
+                    animation-delay: .15s;
+                }
+
+                &:nth-child(2) {
+                    animation-delay: .2s;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: .25s;
+                }
+
+                span {
+                    &:first-child {
+                        font-family: 'Cabin', sans-serif;
+                    }
+
+                    &.item-content {
+                        margin: 0 16px !important;
+                        font-size: 90%;
+                        font-family: 'Cabin', sans-serif;
+                        font-weight: 300;
+                        color: #e8e8e8;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+4. Countdown
+========================================================================== */
+
+ul#countdown {
+    position: relative;
+    display: flex;
+    margin: 10px auto;
+    padding: 0;
+    color: #fff;
+    border-width: 1px 0;
+    overflow: hidden;
+    font-family: 'Cabin', sans-serif;
+    font-weight: 500;
+
+    //Left pulled
+    &.is-pulled-left {
+        left: -10%;
+    }
+
+    //Modified for ICO card
+    &.is-ico {
+        .label {
+            font-size: 10px;
+        }
+    }
+
+    //Numbers
+    .number {
+        background-color: none !important;
+    }
+
+    //List element
+    li {
+        position: relative;
+        margin: 0 -3px 0 0;
+        padding: 0;
+        display: inline-block;
+        width: 25%;
+        font-size: 26px;
+        text-align: center;
+
+        //semicolumn pseudo element
+        &:after {
+            content: ':';
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        //Removing semicolumn for last element
+        &:last-child {
+            &:after {
+                content: '';
+            }
+        }
+
+        //Label
+        .label {
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  bbf-apis:
+    build: .
+    container_name: bbf-gui-apis
+    environment:
+    - TEST=IFF
+    ports:
+      - 443:443
+    volumes:
+      - ./:/usr/src/app
+      - ./blockchain-benchmarking-framework:/hostpipe
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+ 

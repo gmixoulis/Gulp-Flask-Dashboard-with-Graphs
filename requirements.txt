@@ -1,0 +1,17 @@
+﻿markupsafe==2.0.1
+Flask==2.1.0
+Flask-Migrate==2.0.0
+flask-script==2.0.5
+Flask-Cache==0.13.1
+Flask-DebugToolbar==0.10.0
+werkzeug
+flask_cors==3.0.9 
+requests==2.21.0
+flask-swagger-ui==3.20.9
+cdifflib==1.2.5
+docker
+pandas
+datetime
+regex
+Jinja2
+readerwriterlock
